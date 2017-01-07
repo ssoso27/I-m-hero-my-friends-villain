@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/I'm hero first.unity
+- path: Assets/Scenes/Running.unity
   isLoaded: 1
   isActive: 1
