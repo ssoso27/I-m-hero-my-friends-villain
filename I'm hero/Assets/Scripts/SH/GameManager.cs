@@ -4,22 +4,43 @@ using UnityEngine;
 
 /*
     게임을 총괄하는 스크립트
-*/    
+*/
 
-public class GameManager : MonoBehaviour {
+public partial class GameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        CheckPlayerUD(); // Player의 상하이동 가능 여부 체크
-	}
+    // Use this for initialization
+    void Start() {
 
-    // Player의 상하이동 가능 여부 체크
-    void CheckPlayerUD()
+    }
+
+    // Update is called once per frame
+    void Update() {
+        CheckPlayerLR(); // Player의 좌우이동 가능 여부 체크
+    }
+}
+
+public partial class GameManager {
+    PlayerManager pm = GameObject.Find("Player").GetComponent<PlayerManager> ();
+
+    // GameOver 체크
+    void CheckGameOver()
+    {
+        int player_life = pm.GetPlayerLife();
+
+        if (player_life <= 0) // 라이프가 0이하면
+        {
+            GameOver();
+        }
+    }
+
+    // GameOver
+    void GameOver()
+    {
+
+    }
+
+    // Player의 좌우이동 가능 여부 체크
+    void CheckPlayerLR()
     {
         /*
             상하이동 가능 조건 체크하기

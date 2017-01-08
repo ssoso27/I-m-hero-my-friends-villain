@@ -7,17 +7,7 @@ using UnityEngine;
 */
 
 public partial class PlayerManager : MonoBehaviour {
-
-    /*
-        public 전역변수는 간편한 테스트를 위함.
-        후에 private로 바꾸는 것을 추천
-    */
-
-    public const float moveSpeedX = 5.0f; // 플레이어 x좌표 이동 속도
-    public const float moveSpeedY = 3.0f; // 플레이어 y좌표 이동 속도
-    public bool IsLeftRight = false; // 좌우이동 가능 여부
-    public int player_life = 5;
-
+  
     // Use this for initialization
     void Start() {
     }
@@ -28,7 +18,27 @@ public partial class PlayerManager : MonoBehaviour {
     }
 }
 
-public partial class PlayerManager { 
+public partial class PlayerManager
+{
+    // Getter, Setter 함수
+
+    public int GetPlayerLife() { return player_life; }
+}
+
+
+public partial class PlayerManager {
+
+    /*
+    public 전역변수는 간편한 테스트를 위함.
+    후에 private로 바꾸는 것을 추천
+    */
+
+    public const float moveSpeedX = 5.0f; // 플레이어 x좌표 이동 속도
+    public const float moveSpeedY = 3.0f; // 플레이어 y좌표 이동 속도
+    public bool IsLeftRight = false; // 좌우이동 가능 여부
+    public int player_life = 5;
+
+    GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     // 플레이어 이동
     void PlayerMove()
