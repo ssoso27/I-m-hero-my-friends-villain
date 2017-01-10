@@ -7,9 +7,12 @@ using UnityEngine;
 */
 
 public partial class PlayerManager : MonoBehaviour {
-  
+
+    GameManager gm;
+
     // Use this for initialization
     void Start() {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>(); 
     }
 
     // Update is called once per frame
@@ -38,7 +41,6 @@ public partial class PlayerManager {
     public bool IsLeftRight = false; // 좌우이동 가능 여부
     public int player_life = 5;
 
-    GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     // 플레이어 이동
     void PlayerMove()

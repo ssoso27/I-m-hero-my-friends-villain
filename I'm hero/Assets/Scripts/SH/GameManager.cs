@@ -7,10 +7,12 @@ using UnityEngine;
 */
 
 public partial class GameManager : MonoBehaviour {
+    
+    PlayerManager pm;
 
     // Use this for initialization
     void Start() {
-
+        pm = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,6 @@ public partial class GameManager : MonoBehaviour {
 }
 
 public partial class GameManager {
-    PlayerManager pm = GameObject.Find("Player").GetComponent<PlayerManager> ();
 
     // GameOver 체크
     void CheckGameOver()
@@ -36,7 +37,8 @@ public partial class GameManager {
     // GameOver
     void GameOver()
     {
-
+        // 모든 오브젝트 정지
+        // 게임오버 화면 출력
     }
 
     // Player의 좌우이동 가능 여부 체크
