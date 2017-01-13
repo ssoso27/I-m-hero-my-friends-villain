@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public partial class PlayerManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        PositionRegister();
         PlayerMove(); // 플레이어 이동
     }
 }
@@ -40,7 +42,15 @@ public partial class PlayerManager {
     public const float moveSpeedY = 3.0f; // 플레이어 y좌표 이동 속도
     public bool IsLeftRight = false; // 좌우이동 가능 여부
     public int player_life = 5;
+    private Vector3 secondPosition; // 1초마다 기록되는 좌표
 
+    /*
+     * 1초마다 Player 위치 좌표를 기록하는 함수
+     */
+    private void PositionRegister()
+    {
+
+    }
 
     // 플레이어 이동
     void PlayerMove()
@@ -66,24 +76,27 @@ public partial class PlayerManager {
         this.gameObject.transform.Translate(distanceX, distanceY, 0);
     }
 
-    // 충돌 처리
-    void OnCollisionEnter(Collision col)
+    /*
+     * longpaso, boss 등에 쓰는 충돌
+     * 관통 하지 않는 충돌
+     */
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        EnemyCollision(col); // 적과의 충돌
+        PlayerCollisionLongpaso();
+        // PlayerCollisionBoss();
     }
 
-    // 적과의 충돌
-    void EnemyCollision(Collision col)
+    private void PlayerCollisionLongpaso()
     {
-        // 만약 충돌체의 Tag가 longpaso 또는 shortpaso면
-        if (col.gameObject.tag == "longpaso" || col.gameObject.tag == "shortpaso")
-        {
-            // 라이프 감소
-            player_life--;
-            // 게임오버 체크 (by. GameManager.cs)
-            // 뒤로 조금 밀려남 or 1초전 위치로 이동
-            // 잠시 무적
-            // 1초간 모든 오브젝트 일시정지
-        }
+        player_life--;
+    }
+
+    /*
+     * shortpaso, ssal 등에 쓰는 충돌
+     * 관통 하는 충돌
+     */
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
     }
 }
