@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
     게임을 총괄하는 스크립트
@@ -20,6 +21,8 @@ public partial class GameManager : MonoBehaviour {
         CheckPlayerLR(); // Player의 좌우이동 가능 여부 체크
     }
 }
+
+
 
 public partial class GameManager {
 
