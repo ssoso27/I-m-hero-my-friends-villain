@@ -660,5 +660,6 @@ crashlytics-build.properties
 fabric.properties
 
 # Unity
-/Library/
+**/[Ll]ibrary/
+**/[Tt]emp/
 
