@@ -10,15 +10,24 @@ using UnityEngine.SceneManagement;
 public partial class GameManager : MonoBehaviour {
     
     PlayerManager pm;
+    MapMaker mm;
 
     // Use this for initialization
     void Start() {
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        mm = GetComponent<MapMaker>();
+
+        if (mm == null)
+            Debug.Log("null");
+
+        mm.FirstCreateMap();
     }
 
     // Update is called once per frame
     void Update() {
         CheckPlayerLR(); // Player의 좌우이동 가능 여부 체크
+        mm.CreateMap();
+        mm.DeleteMap();
     }
 }
 
