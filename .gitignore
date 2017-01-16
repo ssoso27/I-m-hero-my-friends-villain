@@ -660,7 +660,6 @@ crashlytics-build.properties
 fabric.properties
 
 # Unity
-**/[Ll]ibrary/
-I'm hero/Library
+**/[Ll]ibrary
 **/[Tt]emp/
 
