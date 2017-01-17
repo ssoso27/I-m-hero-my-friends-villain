@@ -6,6 +6,7 @@ public class MapMaker : MonoBehaviour
 
     const float MAP_WIDTH = 46; // 맵 너비
     const int MAP_TYPE_NUM = 10; // 맵 종류의 개수
+    int mapCount = -1; // 생성된 맵 개수
     int PlayerMap; // Player 현재 위치 맵
     
     ArrayList Maps = new ArrayList(); // 맵 동적배열
@@ -65,7 +66,9 @@ public class MapMaker : MonoBehaviour
                 break;
 
         }
+
         Maps.Add(inputMap);
+        mapCount++;
     }
 
     public void FirstCreateMap() // 최초 실행 맵생성
@@ -75,25 +78,25 @@ public class MapMaker : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            Maps[i] = (GameObject)Instantiate((GameObject)Maps[i], new Vector3(50 * i, -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
+            Maps[i] = Instantiate((GameObject)Maps[i], new Vector3(MAP_WIDTH * i, -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
         }
     }
 
     public void CreateMap() // 지속적인 맵 생성
     {
-        PlayerMap = (int)(GameObject.FindWithTag("Player").transform.position.x / 50); // Player 현재 위치 맵 찾음
+        PlayerMap = (int)(GameObject.FindWithTag("Player").transform.position.x / MAP_WIDTH); // Player 현재 위치 맵 찾음
 
-        if (Maps[PlayerMap + 1] == null) // 다음 맵이 null이면
+        if (PlayerMap + 1 > mapCount) // 다음 맵이 null이면
         {
             InputPrefab(PlayerMap + 1);
 
-            Maps[PlayerMap + 1] = (GameObject)Instantiate((GameObject)Maps[PlayerMap + 1], new Vector3(50 * (PlayerMap + 1), -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
+            Maps[PlayerMap + 1] = Instantiate((GameObject)Maps[PlayerMap + 1], new Vector3(MAP_WIDTH * (PlayerMap + 1), -3f, 0), Quaternion.identity); // Map을 position위치에 identity만큼(안 돌림) 돌려서 생성 (이름, 위치, 회전률)
         }
     }
 
     public void DeleteMap() // 지난 맵 삭제
     {
-        PlayerMap = (int)(GameObject.FindWithTag("Player").transform.position.x / 50); // Player 현재 위치 맵 찾음
+        PlayerMap = (int)(GameObject.FindWithTag("Player").transform.position.x / MAP_WIDTH); // Player 현재 위치 맵 찾음
 
         if (PlayerMap > 1)
         {
@@ -102,5 +105,7 @@ public class MapMaker : MonoBehaviour
                 DestroyImmediate((GameObject)Maps[PlayerMap - 2], true);
             }
         }
+
+        Destroy(GameObject.Find("New Game Object"));
     }
 }
