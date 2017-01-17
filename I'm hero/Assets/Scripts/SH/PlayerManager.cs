@@ -18,8 +18,8 @@ public partial class PlayerManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        PositionRegister();
         PlayerMove(); // 플레이어 이동
+        ShootControl();
     }
 }
 
@@ -42,15 +42,6 @@ public partial class PlayerManager {
     public const float moveSpeedY = 3.0f; // 플레이어 y좌표 이동 속도
     public bool IsLeftRight = false; // 좌우이동 가능 여부
     public int player_life = 5;
-    private Vector3 secondPosition; // 1초마다 기록되는 좌표
-
-    /*
-     * 1초마다 Player 위치 좌표를 기록하는 함수
-     */
-    private void PositionRegister()
-    {
-
-    }
 
     // 플레이어 이동
     void PlayerMove()
@@ -115,7 +106,6 @@ public partial class PlayerManager {
             {
                 Instantiate(laserPrefab, transform.position, Quaternion.identity); //레이저 생성
                 shootTimer = 0; //쿨타임을 다시 카운트
-            
             }
             shootTimer += Time.deltaTime; //쿨타임 카운트
         }
