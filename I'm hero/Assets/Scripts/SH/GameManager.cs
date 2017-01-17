@@ -39,9 +39,15 @@ public partial class GameManager {
      * 플레이어 무적
      * 충돌 시 n초간 사용
      */
-    void OverpowerPlayer()
+    public IEnumerator OverpowerPlayer()
     {
+        Debug.Log("무적");
+        GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>().enabled = false;
+        Debug.Log("Player 콜라이더 false");
 
+        yield return new WaitForSeconds(3);
+        GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>().enabled = true;
+        Debug.Log("Player 콜라이더 true");
     }
 
 

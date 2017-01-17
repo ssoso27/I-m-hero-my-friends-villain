@@ -79,7 +79,10 @@ public partial class PlayerManager {
 
     private void PlayerCollisionLongpaso()
     {
+        Debug.Log("플레이어 - 롱파소 충돌");
         player_life--;
+        StartCoroutine(gm.OverpowerPlayer());
+        Debug.Log("충돌 스크립트 끝");
     }
 
     /*
