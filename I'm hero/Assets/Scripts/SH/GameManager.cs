@@ -35,6 +35,16 @@ public partial class GameManager : MonoBehaviour {
 
 public partial class GameManager {
 
+    /*
+     * 플레이어 무적
+     * 충돌 시 n초간 사용
+     */
+    void OverpowerPlayer()
+    {
+
+    }
+
+
     // GameOver 체크
     void CheckGameOver()
     {
