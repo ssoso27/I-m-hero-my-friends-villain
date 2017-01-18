@@ -11,11 +11,13 @@ public partial class GameManager : MonoBehaviour {
     
     PlayerManager pm;
     MapMaker mm;
+    GameObject player;
 
     // Use this for initialization
     void Start() {
         pm = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         mm = GetComponent<MapMaker>();
+        player = GameObject.FindWithTag("Player");
 
         if (mm == null)
             Debug.Log("null");
@@ -41,13 +43,14 @@ public partial class GameManager {
      */
     public IEnumerator OverpowerPlayer()
     {
+        player.GetComponent<CircleCollider2D>().enabled = false;
+        pm.anim.SetBool("IsPlayerFlicker", true);
         Debug.Log("무적");
-        GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>().enabled = false;
-        Debug.Log("Player 콜라이더 false");
 
         yield return new WaitForSeconds(3);
-        GameObject.FindWithTag("Player").GetComponent<CircleCollider2D>().enabled = true;
-        Debug.Log("Player 콜라이더 true");
+        player.GetComponent<CircleCollider2D>().enabled = true;
+        pm.anim.SetBool("IsPlayerFlicker", false);
+        Debug.Log("무적 해제");
     }
 
 

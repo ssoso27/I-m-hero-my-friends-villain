@@ -10,6 +10,7 @@ using UnityEngine;
 public partial class PlayerManager : MonoBehaviour {
 
     GameManager gm;
+    public Animator anim;
 
     // Use this for initialization
     void Start() {
