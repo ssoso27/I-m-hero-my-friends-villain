@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class laser : MonoBehaviour {
 
-    public float moveSpeed = 0.45f;
+    private const float moveSpeed = 30f;
 
 	// Use this for initialization
 	void Start () {
-		
+
+        Destroy(this.gameObject, 2f); //2초 뒤에 자기 자신을 삭제
+
 	}
 	
 	// Update is called once per frame
