@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class laser : MonoBehaviour {
 
-    private const float moveSpeed = 30f;
+    private float moveSpeed;
 
 	// Use this for initialization
 	void Start () {
+        float playerSpeed = GameObject.FindWithTag("Player").GetComponent<PlayerManager>().GetPlayerMoveSpeedX(); // Player의 move speed X 가져옴
+        moveSpeed = playerSpeed + 25.0f;
 
         Destroy(this.gameObject, 2f); //2초 뒤에 자기 자신을 삭제
 

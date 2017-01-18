@@ -28,6 +28,7 @@ public partial class PlayerManager
     // Getter, Setter 함수
 
     public int GetPlayerLife() { return player_life; }
+    public float GetPlayerMoveSpeedX() { return moveSpeedX; }
 }
 
 
