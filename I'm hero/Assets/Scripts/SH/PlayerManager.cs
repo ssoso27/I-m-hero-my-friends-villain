@@ -97,7 +97,7 @@ public partial class PlayerManager {
 
     public GameObject laserPrefab; //발사할 레이저 저장
     public bool canShoot = true; //레이저 쓸 수 있는 상태인지 검사
-    const float shootDelay = 0.5f; //레이저 쏘는 주기
+    const float shootDelay = 0.8f; //레이저 쏘는 주기
     float shootTimer = 0; //시간 재는 타이머 만듬
 
 
